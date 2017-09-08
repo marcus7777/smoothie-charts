@@ -39,7 +39,7 @@
         random.append(new Date().getTime() - (i * rate), g = g + Math.random() - .5)
       }
       setInterval(function() {
-        random.append(new Date().getTime(), Math.random())
+        random.append(new Date().getTime(), g = g + Math.random() - .5)
       }, rate)
       var chart = new SmoothieChart({
         millisPerPixel: rate / 2,
