@@ -34,8 +34,9 @@
     getReady: function(rate){
       // Randomly add a data point every (rate)ms
       var random = new TimeSeries();
+      var g=0
       for (var i = 0; i < 500; i++) {
-        random.append(new Date().getTime() - (i * rate) , Math.random())
+        random.append(new Date().getTime() - (i * rate), g = g + Math.random())
       }
       setInterval(function() {
         random.append(new Date().getTime(), Math.random())
