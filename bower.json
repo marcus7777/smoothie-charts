@@ -8,7 +8,8 @@
     "web-components"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~1.9.3"
+    "polymer": "Polymer/polymer#~1.9.3",
+    "smoothie": "joewalnes/smoothie"
   },
   "devDependencies": {
     "iron-test-helpers": "*",
