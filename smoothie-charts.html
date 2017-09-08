@@ -33,13 +33,21 @@
     },
     getReady: function(rate){
       // Randomly add a data point every (rate)ms
-      var random = new TimeSeries();
-      var g=0
+      var random1 = new TimeSeries()
+      var random2 = new TimeSeries()
+      var random3 = new TimeSeries()
+      var g1=0
+      var g2=Math.random()
+      var g3=Math.random()
       for (var i = 0; i < 500; i++) {
-        random.append(new Date().getTime() - (i * rate), g = g + Math.random() - .5)
+        random1.append(new Date().getTime() - (i * rate), g1 = g1 + Math.random() - .5)
+        random2.append(new Date().getTime() - (i * rate), g2 = g2 + Math.random() - .5)
+        random3.append(new Date().getTime() - (i * rate), g3 = g3 + Math.random() - .5)
       }
       setInterval(function() {
-        random.append(new Date().getTime(), g = g + Math.random() - .5)
+        random1.append(new Date().getTime(), g1 = g1 + Math.random() - .5)
+        random2.append(new Date().getTime(), g2 = g2 + Math.random() - .5)
+        random3.append(new Date().getTime(), g3 = g3 + Math.random() - .5)
       }, rate)
       var chart = new SmoothieChart({
         millisPerPixel: rate / 2,
@@ -49,7 +57,11 @@
         },
         tooltip: true,
       })
-      chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 0, 255, 0.2)', lineWidth: 4 })
+      
+      chart.addTimeSeries(random1, {strokeStyle: 'rgba(0, 0, 255, 1)',   fillStyle: 'rgba(0, 0, 255, 0.2)',   lineWidth: 4 })
+      chart.addTimeSeries(random2, {strokeStyle: 'rgba(0, 255, 0, 1)',   fillStyle: 'rgba(0, 255, 0, 0.2)',   lineWidth: 4 })
+      chart.addTimeSeries(random3, {strokeStyle: 'rgba(255, 255, 0, 1)', fillStyle: 'rgba(255, 255, 0, 0.2)', lineWidth: 4 })
+      
       chart.streamTo(this.$.chart, rate)      
     },
   })
