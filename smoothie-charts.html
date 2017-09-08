@@ -42,7 +42,11 @@
       }, rate)
       var chart = new SmoothieChart({
         millisPerPixel: rate / 2,
-        grid: {millisPerLine: rate*10,verticalSections:5}
+        grid: {
+          millisPerLine: rate * 10,
+          verticalSections:5,
+        },
+        tooltip: true,
       })
       chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 0, 255, 0.2)', lineWidth: 4 })
       chart.streamTo(this.$.chart, rate)      
