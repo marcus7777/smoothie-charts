@@ -1,0 +1,31 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer.html">
+<!--
+  `<smoothie-charts></smoothie-charts>` http://smoothiecharts.org
+  @demo demo.html
+-->
+<dom-module id="smoothie-charts">
+  <template>
+    <style>:host {display:inline-block;color:#666}</style>
+    
+    <script type="text/javascript" src="../smoothie.js"></script>
+    
+    <canvas id="chart" width="[[width]]" height="[[height]]"></canvas>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "smoothie-charts",
+    ready: function(undefined){
+      // Randomly add a data point every 500ms
+            var random = new TimeSeries();
+            setInterval(function() {
+              random.append(new Date().getTime(), Math.random() * 10000);
+            }, 500)
+              var chart = new SmoothieChart();
+              chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 });
+              chart.streamTo(this.$.chart, 500);
+            
+    },
+  })
+</script>
