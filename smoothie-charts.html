@@ -41,7 +41,7 @@
         random.append(new Date().getTime(), Math.random())
       }, rate)
       var chart = new SmoothieChart({
-        millisPerPixel:rate,
+        millisPerPixel:rate/2,
       })
       chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 0, 255, 0.2)', lineWidth: 4 })
       chart.streamTo(this.$.chart, rate)      
