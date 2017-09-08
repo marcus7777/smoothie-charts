@@ -6,7 +6,7 @@
 -->
 <dom-module id="smoothie-charts">
   <template>
-    <style>:host {display:inline-block;color:#666}</style>
+    <style>:host {display:inline-block}</style>
     <canvas id="chart" style="min" width="[[width]]" height="[[height]]"></canvas>
   </template>
 </dom-module>
@@ -28,7 +28,8 @@
       },
       reset: {
         computed: "getReady(rate)"
-      }
+      },
+      
     },
     getReady: function(rate){
       // Randomly add a data point every 500ms
@@ -37,7 +38,7 @@
         random.append(new Date().getTime(), Math.random())
       }, rate)
       var chart = new SmoothieChart()
-      chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 255, 0, 1)', fillStyle: 'rgba(0, 255, 0, 0.2)', lineWidth: 4 })
+      chart.addTimeSeries(random, { strokeStyle: 'rgba(0, 0, 255, 1)', fillStyle: 'rgba(0, 0, 255, 0.2)', lineWidth: 4 })
       chart.streamTo(this.$.chart, rate)      
     },
   })
