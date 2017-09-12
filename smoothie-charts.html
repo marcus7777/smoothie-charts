@@ -27,10 +27,7 @@
         value:500,
       },
       reset: {
-        computed: "getReady(rate)"
-      },
-      update: {
-        computed: "getReady(rate)"
+        computed: "getReady(rate,background,color)"
       },
       x: {
         type:Number,
@@ -41,8 +38,14 @@
       z: {
         type:Number,
       },
+      background: {
+        value: "rgb(255, 255, 255)",
+      },
+      color: {
+        value: "rgb(0, 0, 0)",
+      },
     },
-    getReady: function(rate){
+    getReady: function(rate, background,color){
       // Randomly add a data point every (rate)ms
       var x = new TimeSeries()
       var y = new TimeSeries()
@@ -56,8 +59,14 @@
       var chart = new SmoothieChart({
         millisPerPixel: rate / 2,
         grid: {
+          strokeStyle: color,
+          fillStyle: background,
+          lineWidth: 1,
           millisPerLine: rate * 10,
-          verticalSections:5,
+          verticalSections: 6,
+        },
+        labels: {
+          fillStyle: background,
         },
         tooltip: true,
       })
